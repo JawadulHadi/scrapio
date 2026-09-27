@@ -12,7 +12,14 @@ const searchSchema = z.object({
 });
 
 export const Route = createFileRoute("/_authenticated/")({
-  validateSearch: (s: Record<string, unknown>) => searchSchema.parse(s),
+  validateSearch: (s: Record<string, unknown>): { status?: "open" | "resolved" | "dismissed" | "all"; type?: string; q?: string } => {
+    const p = searchSchema.parse(s);
+    const out: { status?: "open" | "resolved" | "dismissed" | "all"; type?: string; q?: string } = {};
+    if (p.status) out.status = p.status;
+    if (p.type) out.type = p.type;
+    if (p.q) out.q = p.q;
+    return out;
+  },
   head: () => ({
     meta: [
       { title: "Triage Queue — Triage Console" },

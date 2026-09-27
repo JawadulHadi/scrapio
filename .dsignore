@@ -4,3 +4,4 @@ src/lib/triage.ts
 src/lib/sheets.functions.ts
 src/lib/info-mode.tsx
 src/integrations/**
+src/components/SiteUrlPreview.tsx

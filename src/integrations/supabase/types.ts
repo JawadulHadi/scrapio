@@ -14,16 +14,121 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      human_triage_queue: {
+        Row: {
+          error_message: string
+          error_type: string
+          id: string
+          logged_at: string
+          notes: string | null
+          raw_payload: Json
+          resolved_at: string | null
+          resolved_by: string | null
+          status: Database["public"]["Enums"]["triage_status"]
+          url: string
+        }
+        Insert: {
+          error_message?: string
+          error_type?: string
+          id?: string
+          logged_at?: string
+          notes?: string | null
+          raw_payload?: Json
+          resolved_at?: string | null
+          resolved_by?: string | null
+          status?: Database["public"]["Enums"]["triage_status"]
+          url: string
+        }
+        Update: {
+          error_message?: string
+          error_type?: string
+          id?: string
+          logged_at?: string
+          notes?: string | null
+          raw_payload?: Json
+          resolved_at?: string | null
+          resolved_by?: string | null
+          status?: Database["public"]["Enums"]["triage_status"]
+          url?: string
+        }
+        Relationships: []
+      }
+      scraped_warehouse: {
+        Row: {
+          approved_by: string | null
+          extracted_at: string
+          id: string
+          price: number
+          source_triage_id: string | null
+          title: string
+          url: string
+        }
+        Insert: {
+          approved_by?: string | null
+          extracted_at?: string
+          id?: string
+          price?: number
+          source_triage_id?: string | null
+          title: string
+          url: string
+        }
+        Update: {
+          approved_by?: string | null
+          extracted_at?: string
+          id?: string
+          price?: number
+          source_triage_id?: string | null
+          title?: string
+          url?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "scraped_warehouse_source_triage_id_fkey"
+            columns: ["source_triage_id"]
+            isOneToOne: false
+            referencedRelation: "human_triage_queue"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      user_roles: {
+        Row: {
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
+      promote_triage_record: {
+        Args: { _id: string; _notes: string; _price: number; _title: string }
+        Returns: undefined
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "operator"
+      triage_status: "open" | "resolved" | "dismissed"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +255,9 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["operator"],
+      triage_status: ["open", "resolved", "dismissed"],
+    },
   },
 } as const

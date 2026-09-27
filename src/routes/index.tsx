@@ -1,7 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Bug, CheckCircle2, FileSpreadsheet, Inbox, KeyRound, ShieldCheck, Sparkles, Wand2 } from "lucide-react";
+import { ArrowRight, Bug, FileSpreadsheet, Inbox, KeyRound, ShieldCheck, Sparkles, Wand2 } from "lucide-react";
 import { Logo } from "@/components/AppShell";
 import { Button } from "@/components/ui/button";
+import { SiteUrlPreview } from "@/components/SiteUrlPreview";
 
 const TITLE = "Scrapefix — Never lose scraped data to a broken website again";
 const DESC = "When a website changes and your scraper breaks, Scrapefix catches the failed page, lets a person fix it in seconds, and sends clean data to your spreadsheet.";
@@ -47,7 +48,7 @@ function Landing() {
           <span className="inline-flex items-center gap-2 rounded-full border bg-card/60 px-3 py-1 text-xs text-muted-foreground backdrop-blur">
             <Sparkles className="h-3.5 w-3.5 text-glow" /> A safety net for web scrapers
           </span>
-          <h1 className="mx-auto mt-6 max-w-4xl font-display text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
+          <h1 className="mx-auto mt-6 max-w-4xl font-display text-[clamp(2rem,4.5vw+1rem,4rem)] font-bold leading-[1.05] tracking-tight">
             Websites break scrapers.<br /><span className="text-gradient">We catch what falls.</span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-base text-muted-foreground sm:text-lg">
@@ -65,25 +66,9 @@ function Landing() {
         {/* Bento */}
         <section className="mt-20 grid auto-rows-[minmax(180px,auto)] gap-4 md:grid-cols-6">
           <div className="animate-fade-in glow-card hover-lift relative overflow-hidden rounded-2xl bg-card p-6 md:col-span-4 md:row-span-2" style={{ animationDelay: "80ms" }}>
-            <p className="text-xs font-semibold uppercase tracking-widest text-glow">Fix queue</p>
-            <h3 className="mt-2 font-display text-2xl font-bold">Every failure, in one place</h3>
-            <div className="mt-6 space-y-2">
-              {[
-                ["shop.example.com/aurora-headphones", "Page layout changed", "open"],
-                ["market.example.org/listing/88412", "Blocked by a robot check", "open"],
-                ["shop.example.com/desk-lamp", "Fixed by Jawad", "done"],
-              ].map(([u, r, s], i) => (
-                <div key={u} className="animate-fade-in flex items-center justify-between gap-3 rounded-xl border bg-background/60 px-4 py-3" style={{ animationDelay: `${250 + i * 120}ms` }}>
-                  <div className="min-w-0">
-                    <p className="truncate font-mono text-xs">{u}</p>
-                    <p className="text-xs text-muted-foreground">{r}</p>
-                  </div>
-                  {s === "open"
-                    ? <span className="animate-pulse-ring h-2.5 w-2.5 shrink-0 rounded-full bg-status-open" />
-                    : <CheckCircle2 className="h-4 w-4 shrink-0 text-status-resolved" />}
-                </div>
-              ))}
-            </div>
+            <p className="text-xs font-semibold uppercase tracking-widest text-glow">Try it</p>
+            <h3 className="mt-2 font-display text-2xl font-bold">Preview the sites you scrape</h3>
+            <SiteUrlPreview />
           </div>
 
           <div className="animate-fade-in glow-card hover-lift rounded-2xl bg-gradient-to-br from-primary to-secondary p-6 md:col-span-2" style={{ animationDelay: "160ms" }}>

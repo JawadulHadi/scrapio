@@ -43,9 +43,9 @@ function JobsPage() {
   async function create(e: React.FormEvent) {
     e.preventDefault();
     const p = schema.safeParse(form);
-    if (!p.success) return toast.error(p.error.issues[0]?.message);
+    if (!p.success) { toast.error(p.error.issues[0]?.message); return; }
     const { error } = await supabase.from("scraper_jobs").insert(p.data);
-    if (error) return toast.error(error.message);
+    if (error) { toast.error(error.message); return; }
     toast.success("Job added");
     setOpen(false);
     setForm({ name: "", target_url: "", schedule: "daily", engine: "static" });
@@ -53,13 +53,13 @@ function JobsPage() {
   }
   async function toggle(id: string, active: boolean) {
     const { error } = await supabase.from("scraper_jobs").update({ active }).eq("id", id);
-    if (error) return toast.error(error.message);
+    if (error) { toast.error(error.message); return; }
     qc.invalidateQueries({ queryKey: ["jobs"] });
   }
   async function remove(id: string) {
     if (!confirm("Delete this job? Its past failures stay in the queue.")) return;
     const { error } = await supabase.from("scraper_jobs").delete().eq("id", id);
-    if (error) return toast.error(error.message);
+    if (error) { toast.error(error.message); return; }
     qc.invalidateQueries({ queryKey: ["jobs"] });
   }
 

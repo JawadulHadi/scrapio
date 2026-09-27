@@ -49,7 +49,7 @@ function Overview() {
     setBusy(true);
     const { error } = await supabase.rpc("load_sample_data");
     setBusy(false);
-    if (error) return toast.error(error.message);
+    if (error) { toast.error(error.message); return; }
     toast.success("Sample data added");
     qc.invalidateQueries();
   }

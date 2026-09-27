@@ -31,7 +31,7 @@ export function Logo() {
       <span className="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-primary to-glow text-primary-foreground shadow-[0_0_20px_-4px_var(--glow)]">
         <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 6" /></svg>
       </span>
-      Scrape<span className="text-glow">fix</span>
+      <span>Scrape<span className="text-glow">fix</span></span>
     </span>
   );
 }

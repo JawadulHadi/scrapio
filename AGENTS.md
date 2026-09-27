@@ -11,3 +11,4 @@
 
 - Multi-tenant: every table has `owner_id` with owner-only RLS; pages under `_authenticated/` use the browser client. Promotion uses `promote_triage_record` (invoker) so warehouse upsert + queue resolve stay atomic.
 - Scraper failures arrive at `/api/public/triage/ingest`, guarded by `x-ingest-key` looked up in per-user `ingest_keys`; it's the only admin-client write path.
+- Google Sheets export uses the workspace Sheets connector via server fn `syncToSheet` (src/lib/sheets.functions.ts) with full-tab overwrite; per-user target stored in `sheet_exports`. Why: simple idempotent 'keep updated' without row diffing.

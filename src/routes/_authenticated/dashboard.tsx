@@ -10,7 +10,7 @@ import { Hint, InfoPanel } from "@/lib/info-mode";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 
-export const Route = createFileRoute("/_authenticated/")({
+export const Route = createFileRoute("/_authenticated/dashboard")({
   head: () => ({
     meta: [
       { title: "Overview — Scrapefix" },

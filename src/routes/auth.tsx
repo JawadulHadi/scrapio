@@ -37,16 +37,16 @@ function AuthPage() {
 
   useEffect(() => {
     supabase.auth.getUser().then(({ data }) => {
-      if (data.user) navigate({ to: "/", replace: true });
+      if (data.user) navigate({ to: "/dashboard", replace: true });
     });
   }, [navigate]);
 
   async function google() {
     setBusy(true);
-    const result = await lovable.auth.signInWithOAuth("google", { redirect_uri: window.location.origin });
+    const result = await lovable.auth.signInWithOAuth("google", { redirect_uri: `${window.location.origin}/auth` });
     if (result.error) { toast.error(result.error.message ?? "Google sign-in failed"); setBusy(false); return; }
     if (result.redirected) return;
-    navigate({ to: "/", replace: true });
+    navigate({ to: "/dashboard", replace: true });
   }
 
   async function submit(e: React.FormEvent) {
@@ -55,7 +55,7 @@ function AuthPage() {
       const ok = z.string().trim().email().max(255).safeParse(email);
       if (!ok.success) { toast.error("Enter a valid email"); return; }
       setBusy(true);
-      const { error } = await supabase.auth.signInWithOtp({ email: ok.data, options: { emailRedirectTo: window.location.origin } });
+      const { error } = await supabase.auth.signInWithOtp({ email: ok.data, options: { emailRedirectTo: `${window.location.origin}/auth` } });
       setBusy(false);
       if (error) toast.error(error.message);
       else toast.success("Check your inbox — we sent you a sign-in link.");
@@ -68,14 +68,14 @@ function AuthPage() {
       if (mode === "signin") {
         const { error } = await supabase.auth.signInWithPassword(parsed.data);
         if (error) throw error;
-        navigate({ to: "/", replace: true });
+        navigate({ to: "/dashboard", replace: true });
       } else {
         const { data, error } = await supabase.auth.signUp({
           ...parsed.data,
-          options: { emailRedirectTo: window.location.origin },
+          options: { emailRedirectTo: `${window.location.origin}/auth` },
         });
         if (error) throw error;
-        if (data.session) navigate({ to: "/", replace: true });
+        if (data.session) navigate({ to: "/dashboard", replace: true });
         else toast.success("Check your email to confirm your account.");
       }
     } catch (err) {

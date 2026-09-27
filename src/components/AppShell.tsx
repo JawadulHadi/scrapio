@@ -18,7 +18,7 @@ export function StatusBadge({ status }: { status: string }) {
 }
 
 const NAV = [
-  { to: "/", label: "Overview", icon: LayoutDashboard, exact: true },
+  { to: "/dashboard", label: "Overview", icon: LayoutDashboard, exact: true },
   { to: "/jobs", label: "Scraper jobs", icon: Workflow },
   { to: "/queue", label: "Fix queue", icon: Inbox },
   { to: "/data", label: "Clean data", icon: Database },
@@ -27,9 +27,11 @@ const NAV = [
 
 export function Logo() {
   return (
-    <span className="flex items-center gap-2 font-display text-xl font-semibold">
-      <span className="grid h-8 w-8 place-items-center rounded-lg bg-primary text-sm font-bold text-primary-foreground">S</span>
-      Scrapefix
+    <span className="flex items-center gap-2 font-display text-xl font-bold tracking-tight">
+      <span className="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-primary to-glow text-primary-foreground shadow-[0_0_20px_-4px_var(--glow)]">
+        <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 6" /></svg>
+      </span>
+      <span>Scrape<span className="text-glow">fix</span></span>
     </span>
   );
 }
@@ -66,7 +68,7 @@ export function AppShell({ children }: { children: ReactNode }) {
     <div className="min-h-screen lg:flex">
       <aside className="border-b bg-sidebar lg:sticky lg:top-0 lg:h-screen lg:w-60 lg:shrink-0 lg:border-r lg:border-b-0">
         <div className="flex items-center justify-between px-4 py-4 lg:px-5 lg:py-6">
-          <Link to="/"><Logo /></Link>
+          <Link to="/dashboard"><Logo /></Link>
           <button onClick={signOut} className="text-muted-foreground hover:text-foreground lg:hidden" aria-label="Sign out">
             <LogOut className="h-5 w-5" />
           </button>

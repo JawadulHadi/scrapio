@@ -6,14 +6,16 @@ import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Logo } from "@/components/AppShell";
+import { CheckCircle2 } from "lucide-react";
 
 export const Route = createFileRoute("/auth")({
   head: () => ({
     meta: [
-      { title: "Sign in — Triage Console" },
-      { name: "description", content: "Sign in to review and fix failed scraper runs." },
-      { property: "og:title", content: "Sign in — Triage Console" },
-      { property: "og:description", content: "Sign in to review and fix failed scraper runs." },
+      { title: "Scrapefix — Fix broken scrapes in minutes" },
+      { name: "description", content: "Catch every failed scrape, fix it by hand in seconds, and export clean data." },
+      { property: "og:title", content: "Scrapefix — Fix broken scrapes in minutes" },
+      { property: "og:description", content: "Catch every failed scrape, fix it by hand in seconds, and export clean data." },
     ],
   }),
   component: AuthPage,
@@ -64,14 +66,24 @@ function AuthPage() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center px-4">
-      <div className="w-full max-w-sm rounded-lg border bg-card p-6">
-        <div className="mb-6 flex items-center gap-2 font-mono text-sm font-bold">
-          <span className="inline-block h-2.5 w-2.5 rounded-sm bg-primary" />
-          TRIAGE://CONSOLE
+    <div className="grid min-h-screen lg:grid-cols-2">
+      <div className="hidden flex-col justify-between bg-sidebar p-12 lg:flex">
+        <Logo />
+        <div className="animate-fade-in">
+          <h2 className="font-display text-5xl font-semibold leading-tight">Websites change.<br /><span className="text-primary">Your data shouldn't break.</span></h2>
+          <ul className="mt-8 space-y-3 text-muted-foreground">
+            {["Every failed scrape lands in one tidy queue", "Fix records by hand in seconds", "Export clean, verified data to Excel"].map((t) => (
+              <li key={t} className="flex items-center gap-3"><CheckCircle2 className="h-5 w-5 text-status-resolved" />{t}</li>
+            ))}
+          </ul>
         </div>
-        <h1 className="text-xl font-semibold">{mode === "signin" ? "Sign in" : "Create account"}</h1>
-        <p className="mt-1 text-sm text-muted-foreground">Human-in-the-loop review for failed scraper runs.</p>
+        <p className="text-xs text-muted-foreground">Human-in-the-loop data quality for scrapers.</p>
+      </div>
+      <div className="flex items-center justify-center px-4 py-12">
+      <div className="animate-fade-in w-full max-w-sm">
+        <div className="mb-8 lg:hidden"><Logo /></div>
+        <h1 className="font-display text-3xl font-semibold">{mode === "signin" ? "Welcome back" : "Create your workspace"}</h1>
+        <p className="mt-1 text-sm text-muted-foreground">{mode === "signin" ? "Sign in to your workspace." : "Free to start. Your data stays private to you."}</p>
         <form onSubmit={submit} className="mt-6 space-y-4">
           <div className="space-y-1.5">
             <Label htmlFor="email">Email</Label>
@@ -98,6 +110,7 @@ function AuthPage() {
         >
           {mode === "signin" ? "No account? Create one" : "Have an account? Sign in"}
         </button>
+      </div>
       </div>
     </div>
   );

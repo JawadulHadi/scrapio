@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Bug, CheckCircle2, FileSpreadsheet, Inbox, KeyRound, ShieldCheck, Sparkles, Wand2 } from "lucide-react";
+import { ArrowRight, Bug, FileSpreadsheet, Inbox, KeyRound, ShieldCheck, Sparkles, Wand2 } from "lucide-react";
 import { Logo } from "@/components/AppShell";
 import { Button } from "@/components/ui/button";
 import { SiteUrlPreview } from "@/components/SiteUrlPreview";

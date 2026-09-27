@@ -99,6 +99,11 @@ function JobsPage() {
           </Dialog>
         }
       />
+      <Card className="mb-6">
+        <h2 className="font-display text-lg font-semibold">Add a website to preview</h2>
+        <p className="text-sm text-muted-foreground">Paste any site address to check it loads and see what it looks like before you create a job for it.</p>
+        <SiteUrlPreview />
+      </Card>
       <InfoPanel title="What is a job?">
         A job tells your scraper which website to visit and how often. Failures reported for a job are counted here, so you can spot which sites break most.
       </InfoPanel>

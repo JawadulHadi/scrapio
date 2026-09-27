@@ -37,7 +37,7 @@ export function SheetExportCard() {
 
   async function save() {
     const id = parseSpreadsheetId(link);
-    if (!id) { toast.error("Paste a Google Sheets link"); return; }
+    if (!id) { toast.error("That doesn't look like a Google Sheets link. Copy it from your browser's address bar while the sheet is open."); return; }
     const name = tab.trim().slice(0, 100) || "Scrapefix";
     setBusy(true);
     const { error } = await supabase.from("sheet_exports").upsert({ spreadsheet_id: id, sheet_name: name, auto_sync: auto, updated_at: new Date().toISOString() });
@@ -51,8 +51,8 @@ export function SheetExportCard() {
       const res = await sync({ data: {} });
       if (res.error) toast.error(res.error);
       else toast.success(`Sent ${res.rows} records to Google Sheets`);
-    } catch {
-      toast.error("Sync failed");
+    } catch (e) {
+      toast.error(e instanceof Error ? `Sync failed: ${e.message}` : "Sync failed");
     } finally {
       setBusy(false);
       qc.invalidateQueries({ queryKey: ["sheet-export"] });
@@ -77,6 +77,12 @@ export function SheetExportCard() {
           </p>
         </div>
       </div>
+      <ol className="mt-4 list-decimal space-y-1 rounded-xl border bg-background/50 py-3 pl-8 pr-4 text-sm text-muted-foreground">
+        <li>Open or create a spreadsheet at <a href="https://sheets.new" target="_blank" rel="noreferrer" className="text-primary underline">sheets.new</a>.</li>
+        <li>Click <b>Share</b> and give <b>jawadulhadicc@gmail.com</b> <b>Editor</b> access (skip this if the sheet is already in that Google account).</li>
+        <li>Copy the sheet's link from the address bar and paste it below.</li>
+        <li>Press <b>Connect spreadsheet</b>. A tab named below is created and filled with your clean records.</li>
+      </ol>
       <div className="mt-4 grid gap-3 sm:grid-cols-[1fr_180px]">
         <div className="space-y-1.5">
           <Label htmlFor="sheet-link">Spreadsheet link</Label>

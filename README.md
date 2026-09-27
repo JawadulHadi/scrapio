@@ -1,5 +1,8 @@
 <p align="center">
-  <img src="public/logo-wordmark.svg" alt="Scrapefix" width="260" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="src/assets/logos/scrapefix-wordmark-dark.svg">
+    <img src="src/assets/logos/scrapefix-wordmark-light.svg" alt="Scrapefix" width="260">
+  </picture>
 </p>
 
 <p align="center"><b>Websites break scrapers. We catch what falls.</b></p>
@@ -98,6 +101,16 @@ docs/                       Architecture, API, deployment, wiki
 - [Deployment](docs/DEPLOYMENT.md)
 - [Wiki](docs/wiki/Home.md)
 - [Contributing](CONTRIBUTING.md) · [Code of Conduct](CODE_OF_CONDUCT.md) · [Security](SECURITY.md) · [Changelog](CHANGELOG.md)
+
+## Brand assets
+
+| File | Use |
+| --- | --- |
+| `src/assets/logos/scrapefix-mark.svg` | App icon (gradient) |
+| `src/assets/logos/scrapefix-mark-mono.svg` | Single-colour icon |
+| `src/assets/logos/scrapefix-wordmark-dark.svg` | Logo for dark backgrounds |
+| `src/assets/logos/scrapefix-wordmark-light.svg` | Logo for light backgrounds |
+| `public/favicon.svg`, `favicon.ico`, `favicon-16x16.png`, `favicon-32x32.png`, `apple-touch-icon.png`, `icon-192.png`, `icon-512.png` | Browser, phone and install icons |
 
 ## License
 

@@ -28,9 +28,7 @@ const NAV = [
 export function Logo() {
   return (
     <span className="flex items-center gap-2 font-display text-xl font-bold tracking-tight">
-      <span className="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-primary to-glow text-primary-foreground shadow-[0_0_20px_-4px_var(--glow)]">
-        <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M4 12l5 5L20 6" /></svg>
-      </span>
+      <img src={logoMark} alt="" aria-hidden="true" className="h-8 w-8 rounded-lg shadow-[0_0_20px_-4px_var(--glow)]" />
       <span>Scrape<span className="text-glow">fix</span></span>
     </span>
   );

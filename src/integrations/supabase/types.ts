@@ -182,13 +182,6 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      has_role: {
-        Args: {
-          _role: Database["public"]["Enums"]["app_role"]
-          _user_id: string
-        }
-        Returns: boolean
-      }
       load_sample_data: { Args: never; Returns: undefined }
       promote_triage_record: {
         Args: { _id: string; _notes: string; _price: number; _title: string }

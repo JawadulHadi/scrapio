@@ -19,8 +19,10 @@ export type Database = {
           error_message: string
           error_type: string
           id: string
+          job_id: string | null
           logged_at: string
           notes: string | null
+          owner_id: string
           raw_payload: Json
           resolved_at: string | null
           resolved_by: string | null
@@ -31,8 +33,10 @@ export type Database = {
           error_message?: string
           error_type?: string
           id?: string
+          job_id?: string | null
           logged_at?: string
           notes?: string | null
+          owner_id?: string
           raw_payload?: Json
           resolved_at?: string | null
           resolved_by?: string | null
@@ -43,13 +47,41 @@ export type Database = {
           error_message?: string
           error_type?: string
           id?: string
+          job_id?: string | null
           logged_at?: string
           notes?: string | null
+          owner_id?: string
           raw_payload?: Json
           resolved_at?: string | null
           resolved_by?: string | null
           status?: Database["public"]["Enums"]["triage_status"]
           url?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "human_triage_queue_job_id_fkey"
+            columns: ["job_id"]
+            isOneToOne: false
+            referencedRelation: "scraper_jobs"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      ingest_keys: {
+        Row: {
+          created_at: string
+          key: string
+          owner_id: string
+        }
+        Insert: {
+          created_at?: string
+          key?: string
+          owner_id?: string
+        }
+        Update: {
+          created_at?: string
+          key?: string
+          owner_id?: string
         }
         Relationships: []
       }
@@ -58,6 +90,7 @@ export type Database = {
           approved_by: string | null
           extracted_at: string
           id: string
+          owner_id: string
           price: number
           source_triage_id: string | null
           title: string
@@ -67,6 +100,7 @@ export type Database = {
           approved_by?: string | null
           extracted_at?: string
           id?: string
+          owner_id?: string
           price?: number
           source_triage_id?: string | null
           title: string
@@ -76,6 +110,7 @@ export type Database = {
           approved_by?: string | null
           extracted_at?: string
           id?: string
+          owner_id?: string
           price?: number
           source_triage_id?: string | null
           title?: string
@@ -90,6 +125,39 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      scraper_jobs: {
+        Row: {
+          active: boolean
+          created_at: string
+          engine: string
+          id: string
+          name: string
+          owner_id: string
+          schedule: string
+          target_url: string
+        }
+        Insert: {
+          active?: boolean
+          created_at?: string
+          engine?: string
+          id?: string
+          name: string
+          owner_id?: string
+          schedule?: string
+          target_url: string
+        }
+        Update: {
+          active?: boolean
+          created_at?: string
+          engine?: string
+          id?: string
+          name?: string
+          owner_id?: string
+          schedule?: string
+          target_url?: string
+        }
+        Relationships: []
       }
       user_roles: {
         Row: {
@@ -121,6 +189,7 @@ export type Database = {
         }
         Returns: boolean
       }
+      load_sample_data: { Args: never; Returns: undefined }
       promote_triage_record: {
         Args: { _id: string; _notes: string; _price: number; _title: string }
         Returns: undefined

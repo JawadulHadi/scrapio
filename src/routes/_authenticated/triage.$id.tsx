@@ -7,6 +7,7 @@ import { Hint, InfoPanel } from "@/lib/info-mode";
 import { ERROR_LABELS } from "@/lib/triage";
 import { cleanPrice, triageItemQuery } from "@/lib/triage";
 import { supabase } from "@/integrations/supabase/client";
+import { syncToSheet } from "@/lib/sheets.functions";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -65,6 +66,13 @@ function ReviewPage() {
     });
     setBusy(false);
     if (error) { toast.error(error.message); return; }
+    syncToSheet({ data: { onlyIfAuto: true } })
+      .then((res) => {
+        if (res.error) toast.error(`Google Sheet not updated: ${res.error}`);
+        else if (!res.skipped) toast.success("Google Sheet updated");
+        qc.invalidateQueries({ queryKey: ["sheet-export"] });
+      })
+      .catch(() => toast.error("Google Sheet not updated"));
     done("Promoted to warehouse");
   }
 

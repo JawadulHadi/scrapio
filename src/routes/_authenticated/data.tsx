@@ -7,6 +7,7 @@ import { InfoPanel } from "@/lib/info-mode";
 import { downloadCsv, warehouseQuery } from "@/lib/triage";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { SheetExportCard } from "@/components/SheetExportCard";
 
 export const Route = createFileRoute("/_authenticated/data")({
   head: () => ({
@@ -42,6 +43,7 @@ function DataPage() {
       <InfoPanel title="Your final data">
         Everything here has been checked. The CSV file opens directly in Excel or Google Sheets.
       </InfoPanel>
+      <SheetExportCard />
       <Input placeholder="Search title or address…" value={q} onChange={(e) => setQ(e.target.value)} className="mb-4 w-full bg-card sm:w-72" />
       <Card className="overflow-x-auto p-0">
         <table className="w-full text-sm">

@@ -159,6 +159,36 @@ export type Database = {
         }
         Relationships: []
       }
+      sheet_exports: {
+        Row: {
+          auto_sync: boolean
+          last_error: string | null
+          last_synced_at: string | null
+          owner_id: string
+          sheet_name: string
+          spreadsheet_id: string
+          updated_at: string
+        }
+        Insert: {
+          auto_sync?: boolean
+          last_error?: string | null
+          last_synced_at?: string | null
+          owner_id?: string
+          sheet_name?: string
+          spreadsheet_id: string
+          updated_at?: string
+        }
+        Update: {
+          auto_sync?: boolean
+          last_error?: string | null
+          last_synced_at?: string | null
+          owner_id?: string
+          sheet_name?: string
+          spreadsheet_id?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           id: string

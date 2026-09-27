@@ -1,0 +1,6 @@
+src/components/AppShell.tsx
+src/components/SheetExportCard.tsx
+src/lib/triage.ts
+src/lib/sheets.functions.ts
+src/lib/info-mode.tsx
+src/integrations/**

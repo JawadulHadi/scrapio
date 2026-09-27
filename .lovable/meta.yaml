@@ -1,0 +1,4 @@
+framework: react
+css_framework: tailwind
+starter_template: custom_design_system
+source_type: local

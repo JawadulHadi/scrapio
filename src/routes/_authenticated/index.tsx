@@ -6,14 +6,13 @@ import { ERROR_TYPES, timeAgo, triageListQuery } from "@/lib/triage";
 import { Input } from "@/components/ui/input";
 
 const searchSchema = z.object({
-  status: z.enum(["open", "resolved", "dismissed", "all"]).catch("open"),
-  type: z.string().catch("all"),
-  q: z.string().catch(""),
+  status: z.enum(["open", "resolved", "dismissed", "all"]).optional().catch(undefined),
+  type: z.string().optional().catch(undefined),
+  q: z.string().optional().catch(undefined),
 });
 
 export const Route = createFileRoute("/_authenticated/")({
-  validateSearch: (s: Record<string, unknown>) =>
-    searchSchema.parse({ status: s["status"] ?? "open", type: s["type"] ?? "all", q: s["q"] ?? "" }),
+  validateSearch: (s: Record<string, unknown>) => searchSchema.parse(s),
   head: () => ({
     meta: [
       { title: "Triage Queue — Triage Console" },
@@ -26,7 +25,10 @@ export const Route = createFileRoute("/_authenticated/")({
 });
 
 function QueuePage() {
-  const { status, type, q } = Route.useSearch();
+  const search = Route.useSearch();
+  const status = search.status ?? "open";
+  const type = search.type ?? "all";
+  const q = search.q ?? "";
   const navigate = useNavigate({ from: "/" });
   const { data = [], isLoading, error } = useQuery(triageListQuery());
 

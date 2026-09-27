@@ -52,8 +52,8 @@ function ReviewPage() {
   }
 
   async function promote() {
-    if (!title.trim()) return toast.error("Title is required");
-    if (cleaned === null) return toast.error("Enter a valid price");
+    if (!title.trim()) { toast.error("Title is required"); return; }
+    if (cleaned === null) { toast.error("Enter a valid price"); return; }
     setBusy(true);
     const { error } = await supabase.rpc("promote_triage_record", {
       _id: id,
@@ -62,7 +62,7 @@ function ReviewPage() {
       _notes: notes.slice(0, 2000),
     });
     setBusy(false);
-    if (error) return toast.error(error.message);
+    if (error) { toast.error(error.message); return; }
     done("Promoted to warehouse");
   }
 
@@ -71,10 +71,10 @@ function ReviewPage() {
     const { data: u } = await supabase.auth.getUser();
     const { error } = await supabase
       .from("human_triage_queue")
-      .update({ status: "dismissed", notes: notes.slice(0, 2000), resolved_by: u.user?.id, resolved_at: new Date().toISOString() })
+      .update({ status: "dismissed", notes: notes.slice(0, 2000), resolved_by: u.user?.id ?? null, resolved_at: new Date().toISOString() })
       .eq("id", id);
     setBusy(false);
-    if (error) return toast.error(error.message);
+    if (error) { toast.error(error.message); return; }
     done("Record dismissed");
   }
 
@@ -85,7 +85,7 @@ function ReviewPage() {
       .update({ status: "open", notes: notes.slice(0, 2000), resolved_by: null, resolved_at: null })
       .eq("id", id);
     setBusy(false);
-    if (error) return toast.error(error.message);
+    if (error) { toast.error(error.message); return; }
     done("Kept in queue");
   }
 

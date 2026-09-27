@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { z } from "zod";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
+import { lovable } from "@/integrations/lovable/index";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -32,6 +33,7 @@ function AuthPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [busy, setBusy] = useState(false);
+  const [magic, setMagic] = useState(false);
 
   useEffect(() => {
     supabase.auth.getUser().then(({ data }) => {
@@ -39,8 +41,26 @@ function AuthPage() {
     });
   }, [navigate]);
 
+  async function google() {
+    setBusy(true);
+    const result = await lovable.auth.signInWithOAuth("google", { redirect_uri: window.location.origin });
+    if (result.error) { toast.error(result.error.message ?? "Google sign-in failed"); setBusy(false); return; }
+    if (result.redirected) return;
+    navigate({ to: "/", replace: true });
+  }
+
   async function submit(e: React.FormEvent) {
     e.preventDefault();
+    if (magic) {
+      const ok = z.string().trim().email().max(255).safeParse(email);
+      if (!ok.success) { toast.error("Enter a valid email"); return; }
+      setBusy(true);
+      const { error } = await supabase.auth.signInWithOtp({ email: ok.data, options: { emailRedirectTo: window.location.origin } });
+      setBusy(false);
+      if (error) toast.error(error.message);
+      else toast.success("Check your inbox — we sent you a sign-in link.");
+      return;
+    }
     const parsed = schema.safeParse({ email, password });
     if (!parsed.success) { toast.error(parsed.error.issues[0]?.message ?? "Invalid input"); return; }
     setBusy(true);
@@ -84,25 +104,36 @@ function AuthPage() {
         <div className="mb-8 lg:hidden"><Logo /></div>
         <h1 className="font-display text-3xl font-semibold">{mode === "signin" ? "Welcome back" : "Create your workspace"}</h1>
         <p className="mt-1 text-sm text-muted-foreground">{mode === "signin" ? "Sign in to your workspace." : "Free to start. Your data stays private to you."}</p>
-        <form onSubmit={submit} className="mt-6 space-y-4">
+        <Button type="button" variant="outline" className="mt-6 w-full" disabled={busy} onClick={google}>
+          Continue with Google
+        </Button>
+        <div className="my-5 flex items-center gap-3 text-xs text-muted-foreground">
+          <div className="h-px flex-1 bg-border" />or with email<div className="h-px flex-1 bg-border" />
+        </div>
+        <form onSubmit={submit} className="space-y-4">
           <div className="space-y-1.5">
             <Label htmlFor="email">Email</Label>
             <Input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} autoComplete="email" />
           </div>
-          <div className="space-y-1.5">
-            <Label htmlFor="password">Password</Label>
-            <Input
-              id="password"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              autoComplete={mode === "signin" ? "current-password" : "new-password"}
-            />
-          </div>
+          {!magic && (
+            <div className="space-y-1.5">
+              <Label htmlFor="password">Password</Label>
+              <Input
+                id="password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                autoComplete={mode === "signin" ? "current-password" : "new-password"}
+              />
+            </div>
+          )}
           <Button type="submit" className="w-full" disabled={busy}>
-            {busy ? "Please wait…" : mode === "signin" ? "Sign in" : "Create account"}
+            {busy ? "Please wait…" : magic ? "Email me a sign-in link" : mode === "signin" ? "Sign in" : "Create account"}
           </Button>
         </form>
+        <button type="button" onClick={() => setMagic(!magic)} className="mt-3 w-full text-center text-sm font-medium text-primary hover:underline">
+          {magic ? "Use a password instead" : "Use a magic link instead (no password)"}
+        </button>
         <button
           type="button"
           onClick={() => setMode(mode === "signin" ? "signup" : "signin")}

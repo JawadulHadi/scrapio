@@ -5,6 +5,7 @@ import { toast } from "sonner";
 import { z } from "zod";
 import { Plus, Trash2 } from "lucide-react";
 import { AppShell, Card, PageHeader } from "@/components/AppShell";
+import { SiteUrlPreview } from "@/components/SiteUrlPreview";
 import { Hint, InfoPanel } from "@/lib/info-mode";
 import { jobsQuery, triageListQuery } from "@/lib/triage";
 import { supabase } from "@/integrations/supabase/client";

@@ -1,4 +1,7 @@
 framework: react
 css_framework: tailwind
-starter_template: custom_design_system
+component_library: ""
 source_type: local
+upstream_package: ""
+starter_template: custom_design_system
+stack_packages: []

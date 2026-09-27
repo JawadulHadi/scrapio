@@ -1,0 +1,1707 @@
+{
+  "meta": {
+    "name": "Scrapper",
+    "package": "@ws-dd22e65cc6700b88943b/d1cd72ac-da03-4ec2-b353-7361702efa93",
+    "version": "1.1.0",
+    "framework": "react",
+    "css_framework": "tailwind",
+    "starter_template": "custom_design_system",
+    "theme_files": [
+      "src/styles.css"
+    ],
+    "source_type": "local",
+    "source_manifest": {
+      "#enrichment": "20163dcbd24106f0044538f59562fbb8e6083602f3d78ba6e5c175c51d185f92",
+      ".dsignore": "e21eb09c29217ef4073868436cb24cc8",
+      ".gitignore": "6d9e901a692b46a83707c245fb03bc91",
+      ".lovable/meta.yaml": "8ec7245def9c0ef39976dd2bc212ff0a",
+      ".lovable/plan/scraper-triage-dashboard-human-in-the-loop-2026-09-27.md": "a065ad2c770cab85a6c48931e14606da",
+      ".lovable/project.json": "51a90576cd97762828b128ea584e5780",
+      ".prettierignore": "7279a476f196a2da5f7edd18db568dc6",
+      ".prettierrc": "185ef0234746ab738ac1ab6cec5e2bd9",
+      "AGENTS.md": "b3cac46ee4af1d444487560b9d8f0f3f",
+      "CHANGELOG.md": "27d47ed73b14db9a62f9b4024a6183f2",
+      "CODE_OF_CONDUCT.md": "49f31fd829531ac0dc92705c8b28fe55",
+      "CONTRIBUTING.md": "b1348b4d4460a95f1e02993ef13bbdf8",
+      "LICENSE": "5567b2de921f60359dc7f63c9ee30160",
+      "README.md": "83b55e1e73648865a5887a1238ca80cb",
+      "SECURITY.md": "1291f97862c35840581614539774884a",
+      "bunfig.toml": "89115995d9de72fdfc894e16b1e75297",
+      "components.json": "30d3d035361ce807021f5c54620962e9",
+      "docs/API.md": "7a269c759c67c20d1bd02be9fae06646",
+      "docs/ARCHITECTURE.md": "9a2e677cdad021d2f404689cfda0c2c3",
+      "docs/DEPLOYMENT.md": "dc6d726a9ec57d6cfa737fb8687051f4",
+      "docs/wiki/Connecting-a-Scraper.md": "d33b4a2a56e09f245657e125e957172d",
+      "docs/wiki/FAQ.md": "c2829161043635c7bd14d68ff5df49f6",
+      "docs/wiki/Getting-Started.md": "c7734a41022d98aca7d87e37c6cb16a6",
+      "docs/wiki/Google-Sheets-Export.md": "1086d3e239e0dc5899f4e81dca296c5b",
+      "docs/wiki/Home.md": "9f3202cf7bfc7391167c5727faa9831a",
+      "docs/wiki/User-Guide.md": "336f3c5d004b7b73bd32e7d8a2e79c48",
+      "eslint.config.js": "345bdd57e188e0e4525edcd00e5003f5",
+      "lovable.toml": "9636c1bf32f9901bfba4eabb92981217",
+      "package.json": "be2d337ed647826dee4ada109c6e29ff",
+      "public/favicon.ico": "9f504444f85a5af2eef9264b02ae40be",
+      "public/logo-wordmark.svg": "f044dafd07118dfbb7a9c66f606a606e",
+      "public/logo.svg": "3a8474c9ed75c0ebaa52c3148bebbee1",
+      "public/robots.txt": "f9dff89adf98833e676de2205921996a",
+      "roadmap.md": "5370c35d976e6a9f0179ba221a66ce50",
+      "src/components/AppShell.tsx": "7c8a7146b8530136c8044f7005925348",
+      "src/components/SheetExportCard.tsx": "de72b2ec0a6d2e272c6fdec2085d094d",
+      "src/components/ui/accordion.tsx": "55f9dda62b4e3913c9b23e5015a86aef",
+      "src/components/ui/alert-dialog.tsx": "96350e949e9b7b674545430a410ab89c",
+      "src/components/ui/alert.tsx": "f993d7e96b1e25ce50e68ed97e11d2a8",
+      "src/components/ui/aspect-ratio.tsx": "c5c364545e1b25a94e9e752cd67ad048",
+      "src/components/ui/avatar.tsx": "72989cd32f72c4122802540ef32525a5",
+      "src/components/ui/badge.tsx": "81cade001fc4260f9943e18dcd79449b",
+      "src/components/ui/breadcrumb.tsx": "bb9ac254f12662b20d5d50b84308bf3a",
+      "src/components/ui/button.tsx": "7d07d520f486b12bd47373d694ecd2ee",
+      "src/components/ui/calendar.tsx": "d849cc610e2683271f3f1c47d093cf30",
+      "src/components/ui/card.tsx": "d6c48ea36221b9cdc3576d305d12d5d5",
+      "src/components/ui/carousel.tsx": "e324c68ae00cd5aed49317638abd429a",
+      "src/components/ui/chart.tsx": "6a3baf94f2e89f1f97d4d7a28f3622d2",
+      "src/components/ui/checkbox.tsx": "f78aac270ca482c8c2cb907ef6260462",
+      "src/components/ui/collapsible.tsx": "767631bbc344945c236f185f4078d71d",
+      "src/components/ui/command.tsx": "014782599cc838b021ec68b07ad4ea02",
+      "src/components/ui/context-menu.tsx": "3ba8244ea23df34a1dba92f3a1230dad",
+      "src/components/ui/dialog.tsx": "ef4fe8e7de8675730afe3d633b260e09",
+      "src/components/ui/drawer.tsx": "8be333e8fd8e42576b1b5f72f07f4337",
+      "src/components/ui/dropdown-menu.tsx": "28d6e98d3c7811fc0514bfa69416f087",
+      "src/components/ui/form.tsx": "1b0aa6302b9017ea2a1307c22a1d2983",
+      "src/components/ui/hover-card.tsx": "1442794c5ca2a78d69e4e613b315ed3d",
+      "src/components/ui/input-otp.tsx": "65625f2f1c4d731a760aeed7b54459d1",
+      "src/components/ui/input.tsx": "1d4cc52a4cd8afb3e18e45bda942bb8a",
+      "src/components/ui/label.tsx": "7e35df4ca8edd0835efd97ca7937ef92",
+      "src/components/ui/menubar.tsx": "3c4121a1e78d3f424a7295381a8997d3",
+      "src/components/ui/navigation-menu.tsx": "e85351147a02b29577ff83d188b63c24",
+      "src/components/ui/pagination.tsx": "fac6cdbb4bbf78b273d85cd36d6cbb49",
+      "src/components/ui/popover.tsx": "f18aa1da2144f25ee60795c539c51bcd",
+      "src/components/ui/progress.tsx": "55c462e5c9dd678dcf2c0c510b014ac4",
+      "src/components/ui/radio-group.tsx": "0e1ace237a5da3197e3eb1e6683faba9",
+      "src/components/ui/resizable.tsx": "d9fcb9203c749fcab4e125a99bb12a86",
+      "src/components/ui/scroll-area.tsx": "87b65d3eb26f2b02ff35a7acea585ba5",
+      "src/components/ui/select.tsx": "31ea1bbd6671833b010b2e852c8a55d0",
+      "src/components/ui/separator.tsx": "433d163c4ffa00b59398a0c293198b5e",
+      "src/components/ui/sheet.tsx": "0221fbf97b69611b47fcbc10bb27669a",
+      "src/components/ui/sidebar.tsx": "83c1623eb50ebc370d7b1b84a542e369",
+      "src/components/ui/skeleton.tsx": "41b182e6e2fc3805960d41e767d4a972",
+      "src/components/ui/slider.tsx": "4752f1bfa26426988d325599e01c335b",
+      "src/components/ui/sonner.tsx": "97f59f60be3413196d095fcbf7383216",
+      "src/components/ui/switch.tsx": "82f5d8b0c59bb7ff305caa9f502e79ff",
+      "src/components/ui/table.tsx": "7cc889989d53894b659903c73aded96e",
+      "src/components/ui/tabs.tsx": "56e725558c2ce72c18243bf51717f385",
+      "src/components/ui/textarea.tsx": "c7aad96fb9545210d53135a96c76ed6b",
+      "src/components/ui/toggle-group.tsx": "ac26383acf721d116ca8e3ab5c5355d5",
+      "src/components/ui/toggle.tsx": "ee8c5adac74e7242b85b544db1a8fbad",
+      "src/components/ui/tooltip.tsx": "67d71db5a1ab935695d1def497f5b8a6",
+      "src/hooks/use-mobile.tsx": "c0a0bdd4638c391a1dd06ac82074e60b",
+      "src/index.ts": "a19cc5fbc11a969ef2ffd4f9070718f6",
+      "src/integrations/lovable/index.ts": "e9cf6e6968dd0392b2222ee0745ecece",
+      "src/integrations/supabase/auth-attacher.ts": "dad043cda134d909e52de0346c16625e",
+      "src/integrations/supabase/auth-middleware.ts": "eabaf8c8ba32205717921ce5f255185e",
+      "src/integrations/supabase/client.server.ts": "23f838ab7633e0a97e695f3c500d91aa",
+      "src/integrations/supabase/client.ts": "8af43e12f1332b440278c7ea7e4cb1e8",
+      "src/integrations/supabase/cron-auth.ts": "6c04781ff98ada5977945fae55d39385",
+      "src/integrations/supabase/previewAuthStorage.ts": "0a2d63e049bc63135b19c8e21cc0b1aa",
+      "src/integrations/supabase/types.ts": "82ab173b507a946b364f41b804c856b6",
+      "src/lib/error-capture.ts": "f630d9686a9a989170f22eff4de7b30d",
+      "src/lib/error-page.ts": "8da0ddd7569bac2676b9a5c8edff8a36",
+      "src/lib/info-mode.tsx": "8fff5e87ebdadd0b1ffd451ff1e9a943",
+      "src/lib/lovable-error-reporting.ts": "0367e03b7d71917510e4dc1cdae172ec",
+      "src/lib/sheets.functions.ts": "976b7bb4d615b57858efd23f9f493673",
+      "src/lib/triage.ts": "22d817e5eb6537575826b100ac784dce",
+      "src/lib/utils.ts": "d9837f38cc05303254571985e3164050",
+      "src/routeTree.gen.ts": "73fa2500c2ade481cf5fa175eeb6cd74",
+      "src/router.tsx": "8f905e713b0eba7fa8148b7995a708c9",
+      "src/routes/README.md": "b3a2f259b66fd1a11f54b6d5ac83bf57",
+      "src/routes/__root.tsx": "01ef20804f21ea80798b4f7ec8376bc5",
+      "src/routes/_authenticated/dashboard.tsx": "1ef693c62ceefa2facb556605af682db",
+      "src/routes/_authenticated/data.tsx": "bd48e28ce99ff4aedb1296e5f320aec2",
+      "src/routes/_authenticated/integration.tsx": "9cf68afb7dfc4d2167883522e266850e",
+      "src/routes/_authenticated/jobs.tsx": "76ef90bf4491eb35614554c1b031991d",
+      "src/routes/_authenticated/queue.tsx": "ce55de7cfc734a7e7198eb8edac976a5",
+      "src/routes/_authenticated/route.tsx": "cfef1e67d3830b63f600a6d3d70ea3c4",
+      "src/routes/_authenticated/triage.$id.tsx": "267014c360204a76ca0e5cfff67fca4f",
+      "src/routes/api/public/triage/ingest.ts": "549c0196bfd9ce6da2e75af39f3477f6",
+      "src/routes/auth.tsx": "ca06bfded4a822e1f35cb29962a2a1a3",
+      "src/routes/index.tsx": "80cf08579a7c5bbe3402fe108e32a1cb",
+      "src/server.ts": "c7bbc49bb70e318af618d92775ee0f27",
+      "src/start.ts": "d77c1c12904be5077c6955d9b30071af",
+      "src/styles.css": "48d61d70afe72122c6c8e84a7215c4fa",
+      "supabase/config.toml": "84d383a98c6302f19ec3bb9bc6ff202c",
+      "supabase/migrations/20260927080806_55f8a9b9-49a5-4ec2-9984-2c1d2eb90609.sql": "66afeca4afdcfa9293a158160cef3947",
+      "supabase/migrations/20260927080826_6bf9ea40-5427-42ba-a474-6d676a0f7fd9.sql": "77a3313e8c84f38488df716b26ce50d2",
+      "supabase/migrations/20260927094556_067e24de-8ff7-48cc-b61b-0b98a6544cd7.sql": "3fc1abd0cfaf90e8faf5ad0e6ac0fe41",
+      "supabase/migrations/20260927094614_32858466-51c3-400f-aeda-223f52b4934a.sql": "009e9136c9746c2e83dc14962761ca7d",
+      "supabase/migrations/20260927095431_b5479337-d4b8-49e1-99aa-2a1881a65ee3.sql": "e750de08a6f47a02f305a47dfeabcd8f",
+      "supabase/migrations/20260927095452_a39c5eea-f688-4edb-989f-305e8219a3c8.sql": "32bf3beddaade5a1bf60ee2b6f8a89f1",
+      "supabase/migrations/20260927100227_f53c9835-01ff-4a3d-8fce-aa6508aef0bb.sql": "0b18bf4a9d97563a92e78af01c936369",
+      "tsconfig.json": "e84e5c7fe88e3c5a4d54f55a816d42c1",
+      "vite.config.ts": "d67e8217e5f31b87c276b6357c9aedcf"
+    },
+    "pipeline_version": 8
+  },
+  "tokens": {
+    "color": [
+      {
+        "name": "--background",
+        "raw": "#0a0a1a",
+        "source": "src/styles.css"
+      },
+      {
+        "name": "--foreground",
+        "raw": "oklch(0.96 0.01 280)",
+        "source": "src/styles.css"
+      },
+      {
+        "name": "--card",
+        "raw": "#141432",
+        "source": "src/styles.css"
+      },
+      {
+        "name": "--card-foreground",
+        "raw": "oklch(0.96 0.01 280)",
+        "source": "src/styles.css"
+      },
+      {
+        "name": "--popover",
+        "raw": "#141432",
+        "source": "src/styles.css"
+      },
+      {
+        "name": "--popover-foreground",
+        "raw": "oklch(0.96 0.01 280)",
+        "source": "src/styles.css"
+      },
+      {
+        "name": "--primary",
+        "raw": "#4f46e5",
+        "source": "src/styles.css"
+      },
+      {
+        "name": "--primary-foreground",
+        "raw": "#ffffff",
+        "source": "src/styles.css"
+      },
+      {
+        "name": "--secondary",
+        "raw": "#1e1e5a",
+        "source": "src/styles.css"
+      },
+      {
+        "name": "--secondary-foreground",
+        "raw": "oklch(0.96 0.01 280)",
+        "source": "src/styles.css"
+      },
+      {
+        "name": "--muted",
+        "raw": "#16163a",
+        "source": "src/styles.css"
+      },
+      {
+        "name": "--muted-foreground",
+        "raw": "oklch(0.72 0.03 280)",
+        "source": "src/styles.css"
+      },
+      {
+        "name": "--accent",
+        "raw": "#1e1e5a",
+        "source": "src/styles.css"
+      },
+      {
+        "name": "--accent-foreground",
+        "raw": "oklch(0.96 0.01 280)",
+        "source": "src/styles.css"
+      },
+      {
+        "name": "--destructive",
+        "raw": "oklch(0.64 0.21 22)",
+        "source": "src/styles.css"
+      },
+      {
+        "name": "--destructive-foreground",
+        "raw": "#ffffff",
+        "source": "src/styles.css"
+      },
+      {
+        "name": "--border",
+        "raw": "oklch(0.32 0.06 280)",
+        "source": "src/styles.css"
+      },
+      {
+        "name": "--input",
+        "raw": "oklch(0.34 0.06 280)",
+        "source": "src/styles.css"
+      },
+      {
+        "name": "--ring",
+        "raw": "#6d64f5",
+        "source": "src/styles.css"
+      },
+      {
+        "name": "--glow",
+        "raw": "#7c74ff",
+        "source": "src/styles.css"
+      },
+      {
+        "name": "--status-open",
+        "raw": "oklch(0.78 0.15 75)",
+        "source": "src/styles.css"
+      },
+      {
+        "name": "--status-resolved",
+        "raw": "oklch(0.76 0.16 160)",
+        "source": "src/styles.css"
+      },
+      {
+        "name": "--status-dismissed",
+        "raw": "oklch(0.62 0.03 280)",
+        "source": "src/styles.css"
+      },
+      {
+        "name": "--chart-1",
+        "raw": "#7c74ff",
+        "source": "src/styles.css"
+      },
+      {
+        "name": "--chart-2",
+        "raw": "oklch(0.76 0.16 160)",
+        "source": "src/styles.css"
+      },
+      {
+        "name": "--chart-3",
+        "raw": "oklch(0.78 0.15 75)",
+        "source": "src/styles.css"
+      },
+      {
+        "name": "--chart-4",
+        "raw": "oklch(0.7 0.14 310)",
+        "source": "src/styles.css"
+      },
+      {
+        "name": "--chart-5",
+        "raw": "oklch(0.7 0.12 230)",
+        "source": "src/styles.css"
+      },
+      {
+        "name": "--sidebar",
+        "raw": "#0e0e24",
+        "source": "src/styles.css"
+      },
+      {
+        "name": "--sidebar-foreground",
+        "raw": "oklch(0.96 0.01 280)",
+        "source": "src/styles.css"
+      },
+      {
+        "name": "--sidebar-primary",
+        "raw": "#4f46e5",
+        "source": "src/styles.css"
+      },
+      {
+        "name": "--sidebar-primary-foreground",
+        "raw": "#ffffff",
+        "source": "src/styles.css"
+      },
+      {
+        "name": "--sidebar-accent",
+        "raw": "#1e1e5a",
+        "source": "src/styles.css"
+      },
+      {
+        "name": "--sidebar-accent-foreground",
+        "raw": "oklch(0.96 0.01 280)",
+        "source": "src/styles.css"
+      },
+      {
+        "name": "--sidebar-border",
+        "raw": "oklch(0.28 0.05 280)",
+        "source": "src/styles.css"
+      },
+      {
+        "name": "--sidebar-ring",
+        "raw": "#6d64f5",
+        "source": "src/styles.css"
+      }
+    ],
+    "typography": [
+      {
+        "name": "--font-display",
+        "raw": "\"Syne\", ui-sans-serif, system-ui, sans-serif",
+        "source": "src/styles.css"
+      },
+      {
+        "name": "--font-sans",
+        "raw": "\"Plus Jakarta Sans\", ui-sans-serif, system-ui, sans-serif",
+        "source": "src/styles.css"
+      },
+      {
+        "name": "--font-mono",
+        "raw": "\"JetBrains Mono\", ui-monospace, monospace",
+        "source": "src/styles.css"
+      }
+    ],
+    "radius": [
+      {
+        "name": "--radius-sm",
+        "raw": "calc(var(--radius) - 4px)",
+        "source": "src/styles.css"
+      },
+      {
+        "name": "--radius-md",
+        "raw": "calc(var(--radius) - 2px)",
+        "source": "src/styles.css"
+      },
+      {
+        "name": "--radius-xl",
+        "raw": "calc(var(--radius) + 4px)",
+        "source": "src/styles.css"
+      },
+      {
+        "name": "--radius",
+        "raw": "0.875rem",
+        "source": "src/styles.css"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Accordion",
+      "file": "src/components/ui/accordion.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "AccordionItem",
+      "file": "src/components/ui/accordion.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "AccordionTrigger",
+      "file": "src/components/ui/accordion.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "AccordionContent",
+      "file": "src/components/ui/accordion.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "AlertDialog",
+      "file": "src/components/ui/alert-dialog.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "AlertDialogPortal",
+      "file": "src/components/ui/alert-dialog.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "AlertDialogOverlay",
+      "file": "src/components/ui/alert-dialog.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "AlertDialogTrigger",
+      "file": "src/components/ui/alert-dialog.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "AlertDialogContent",
+      "file": "src/components/ui/alert-dialog.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "AlertDialogHeader",
+      "file": "src/components/ui/alert-dialog.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "AlertDialogFooter",
+      "file": "src/components/ui/alert-dialog.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "AlertDialogTitle",
+      "file": "src/components/ui/alert-dialog.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "AlertDialogDescription",
+      "file": "src/components/ui/alert-dialog.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "AlertDialogAction",
+      "file": "src/components/ui/alert-dialog.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "AlertDialogCancel",
+      "file": "src/components/ui/alert-dialog.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "Alert",
+      "file": "src/components/ui/alert.tsx",
+      "import_path": "",
+      "props": [
+        {
+          "name": "variant",
+          "type": "enum",
+          "values": [
+            "default",
+            "destructive"
+          ],
+          "default": "default"
+        }
+      ]
+    },
+    {
+      "name": "AlertTitle",
+      "file": "src/components/ui/alert.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "AlertDescription",
+      "file": "src/components/ui/alert.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "AspectRatio",
+      "file": "src/components/ui/aspect-ratio.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "Avatar",
+      "file": "src/components/ui/avatar.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "AvatarImage",
+      "file": "src/components/ui/avatar.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "AvatarFallback",
+      "file": "src/components/ui/avatar.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "Badge",
+      "file": "src/components/ui/badge.tsx",
+      "import_path": "",
+      "props": [
+        {
+          "name": "variant",
+          "type": "enum",
+          "values": [
+            "default",
+            "secondary",
+            "destructive",
+            "outline"
+          ],
+          "default": "default"
+        }
+      ]
+    },
+    {
+      "name": "Breadcrumb",
+      "file": "src/components/ui/breadcrumb.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "BreadcrumbList",
+      "file": "src/components/ui/breadcrumb.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "BreadcrumbItem",
+      "file": "src/components/ui/breadcrumb.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "BreadcrumbLink",
+      "file": "src/components/ui/breadcrumb.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "BreadcrumbPage",
+      "file": "src/components/ui/breadcrumb.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "BreadcrumbSeparator",
+      "file": "src/components/ui/breadcrumb.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "BreadcrumbEllipsis",
+      "file": "src/components/ui/breadcrumb.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "Button",
+      "file": "src/components/ui/button.tsx",
+      "import_path": "",
+      "props": [
+        {
+          "name": "variant",
+          "type": "enum",
+          "values": [
+            "default",
+            "destructive",
+            "outline",
+            "secondary",
+            "ghost",
+            "link"
+          ],
+          "default": "default"
+        },
+        {
+          "name": "size",
+          "type": "enum",
+          "values": [
+            "default",
+            "sm",
+            "lg",
+            "icon"
+          ],
+          "default": "default"
+        },
+        {
+          "name": "asChild",
+          "type": "boolean",
+          "default": "false"
+        }
+      ]
+    },
+    {
+      "name": "Calendar",
+      "file": "src/components/ui/calendar.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "CalendarDayButton",
+      "file": "src/components/ui/calendar.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "Card",
+      "file": "src/components/ui/card.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "CardHeader",
+      "file": "src/components/ui/card.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "CardFooter",
+      "file": "src/components/ui/card.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "CardTitle",
+      "file": "src/components/ui/card.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "CardDescription",
+      "file": "src/components/ui/card.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "CardContent",
+      "file": "src/components/ui/card.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "Carousel",
+      "file": "src/components/ui/carousel.tsx",
+      "import_path": "",
+      "props": [
+        {
+          "name": "opts",
+          "type": "any"
+        },
+        {
+          "name": "plugins",
+          "type": "any"
+        },
+        {
+          "name": "orientation",
+          "type": "enum",
+          "values": [
+            "horizontal",
+            "vertical"
+          ],
+          "default": "horizontal"
+        },
+        {
+          "name": "setApi",
+          "type": "function"
+        }
+      ]
+    },
+    {
+      "name": "CarouselContent",
+      "file": "src/components/ui/carousel.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "CarouselItem",
+      "file": "src/components/ui/carousel.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "CarouselPrevious",
+      "file": "src/components/ui/carousel.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "CarouselNext",
+      "file": "src/components/ui/carousel.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "ChartContainer",
+      "file": "src/components/ui/chart.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "ChartTooltip",
+      "file": "src/components/ui/chart.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "ChartTooltipContent",
+      "file": "src/components/ui/chart.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "ChartLegend",
+      "file": "src/components/ui/chart.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "ChartLegendContent",
+      "file": "src/components/ui/chart.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "ChartStyle",
+      "file": "src/components/ui/chart.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "Checkbox",
+      "file": "src/components/ui/checkbox.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "Collapsible",
+      "file": "src/components/ui/collapsible.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "CollapsibleTrigger",
+      "file": "src/components/ui/collapsible.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "CollapsibleContent",
+      "file": "src/components/ui/collapsible.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "Command",
+      "file": "src/components/ui/command.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "CommandDialog",
+      "file": "src/components/ui/command.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "CommandInput",
+      "file": "src/components/ui/command.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "CommandList",
+      "file": "src/components/ui/command.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "CommandEmpty",
+      "file": "src/components/ui/command.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "CommandGroup",
+      "file": "src/components/ui/command.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "CommandItem",
+      "file": "src/components/ui/command.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "CommandShortcut",
+      "file": "src/components/ui/command.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "CommandSeparator",
+      "file": "src/components/ui/command.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "ContextMenu",
+      "file": "src/components/ui/context-menu.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "ContextMenuTrigger",
+      "file": "src/components/ui/context-menu.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "ContextMenuContent",
+      "file": "src/components/ui/context-menu.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "ContextMenuItem",
+      "file": "src/components/ui/context-menu.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "ContextMenuCheckboxItem",
+      "file": "src/components/ui/context-menu.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "ContextMenuRadioItem",
+      "file": "src/components/ui/context-menu.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "ContextMenuLabel",
+      "file": "src/components/ui/context-menu.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "ContextMenuSeparator",
+      "file": "src/components/ui/context-menu.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "ContextMenuShortcut",
+      "file": "src/components/ui/context-menu.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "ContextMenuGroup",
+      "file": "src/components/ui/context-menu.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "ContextMenuPortal",
+      "file": "src/components/ui/context-menu.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "ContextMenuSub",
+      "file": "src/components/ui/context-menu.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "ContextMenuSubContent",
+      "file": "src/components/ui/context-menu.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "ContextMenuSubTrigger",
+      "file": "src/components/ui/context-menu.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "ContextMenuRadioGroup",
+      "file": "src/components/ui/context-menu.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "Dialog",
+      "file": "src/components/ui/dialog.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "DialogPortal",
+      "file": "src/components/ui/dialog.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "DialogOverlay",
+      "file": "src/components/ui/dialog.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "DialogTrigger",
+      "file": "src/components/ui/dialog.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "DialogClose",
+      "file": "src/components/ui/dialog.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "DialogContent",
+      "file": "src/components/ui/dialog.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "DialogHeader",
+      "file": "src/components/ui/dialog.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "DialogFooter",
+      "file": "src/components/ui/dialog.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "DialogTitle",
+      "file": "src/components/ui/dialog.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "DialogDescription",
+      "file": "src/components/ui/dialog.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "Drawer",
+      "file": "src/components/ui/drawer.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "DrawerPortal",
+      "file": "src/components/ui/drawer.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "DrawerOverlay",
+      "file": "src/components/ui/drawer.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "DrawerTrigger",
+      "file": "src/components/ui/drawer.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "DrawerClose",
+      "file": "src/components/ui/drawer.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "DrawerContent",
+      "file": "src/components/ui/drawer.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "DrawerHeader",
+      "file": "src/components/ui/drawer.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "DrawerFooter",
+      "file": "src/components/ui/drawer.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "DrawerTitle",
+      "file": "src/components/ui/drawer.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "DrawerDescription",
+      "file": "src/components/ui/drawer.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "DropdownMenu",
+      "file": "src/components/ui/dropdown-menu.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "DropdownMenuTrigger",
+      "file": "src/components/ui/dropdown-menu.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "DropdownMenuContent",
+      "file": "src/components/ui/dropdown-menu.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "DropdownMenuItem",
+      "file": "src/components/ui/dropdown-menu.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "DropdownMenuCheckboxItem",
+      "file": "src/components/ui/dropdown-menu.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "DropdownMenuRadioItem",
+      "file": "src/components/ui/dropdown-menu.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "DropdownMenuLabel",
+      "file": "src/components/ui/dropdown-menu.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "DropdownMenuSeparator",
+      "file": "src/components/ui/dropdown-menu.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "DropdownMenuShortcut",
+      "file": "src/components/ui/dropdown-menu.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "DropdownMenuGroup",
+      "file": "src/components/ui/dropdown-menu.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "DropdownMenuPortal",
+      "file": "src/components/ui/dropdown-menu.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "DropdownMenuSub",
+      "file": "src/components/ui/dropdown-menu.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "DropdownMenuSubContent",
+      "file": "src/components/ui/dropdown-menu.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "DropdownMenuSubTrigger",
+      "file": "src/components/ui/dropdown-menu.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "DropdownMenuRadioGroup",
+      "file": "src/components/ui/dropdown-menu.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "Form",
+      "file": "src/components/ui/form.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "FormItem",
+      "file": "src/components/ui/form.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "FormLabel",
+      "file": "src/components/ui/form.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "FormControl",
+      "file": "src/components/ui/form.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "FormDescription",
+      "file": "src/components/ui/form.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "FormMessage",
+      "file": "src/components/ui/form.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "FormField",
+      "file": "src/components/ui/form.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "HoverCard",
+      "file": "src/components/ui/hover-card.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "HoverCardTrigger",
+      "file": "src/components/ui/hover-card.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "HoverCardContent",
+      "file": "src/components/ui/hover-card.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "InputOTP",
+      "file": "src/components/ui/input-otp.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "InputOTPGroup",
+      "file": "src/components/ui/input-otp.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "InputOTPSlot",
+      "file": "src/components/ui/input-otp.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "InputOTPSeparator",
+      "file": "src/components/ui/input-otp.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "Input",
+      "file": "src/components/ui/input.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "Label",
+      "file": "src/components/ui/label.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "Menubar",
+      "file": "src/components/ui/menubar.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "MenubarMenu",
+      "file": "src/components/ui/menubar.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "MenubarTrigger",
+      "file": "src/components/ui/menubar.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "MenubarContent",
+      "file": "src/components/ui/menubar.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "MenubarItem",
+      "file": "src/components/ui/menubar.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "MenubarSeparator",
+      "file": "src/components/ui/menubar.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "MenubarLabel",
+      "file": "src/components/ui/menubar.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "MenubarCheckboxItem",
+      "file": "src/components/ui/menubar.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "MenubarRadioGroup",
+      "file": "src/components/ui/menubar.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "MenubarRadioItem",
+      "file": "src/components/ui/menubar.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "MenubarPortal",
+      "file": "src/components/ui/menubar.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "MenubarSubContent",
+      "file": "src/components/ui/menubar.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "MenubarSubTrigger",
+      "file": "src/components/ui/menubar.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "MenubarGroup",
+      "file": "src/components/ui/menubar.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "MenubarSub",
+      "file": "src/components/ui/menubar.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "MenubarShortcut",
+      "file": "src/components/ui/menubar.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "NavigationMenu",
+      "file": "src/components/ui/navigation-menu.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "NavigationMenuList",
+      "file": "src/components/ui/navigation-menu.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "NavigationMenuItem",
+      "file": "src/components/ui/navigation-menu.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "NavigationMenuContent",
+      "file": "src/components/ui/navigation-menu.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "NavigationMenuTrigger",
+      "file": "src/components/ui/navigation-menu.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "NavigationMenuLink",
+      "file": "src/components/ui/navigation-menu.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "NavigationMenuIndicator",
+      "file": "src/components/ui/navigation-menu.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "NavigationMenuViewport",
+      "file": "src/components/ui/navigation-menu.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "Pagination",
+      "file": "src/components/ui/pagination.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "PaginationContent",
+      "file": "src/components/ui/pagination.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "PaginationLink",
+      "file": "src/components/ui/pagination.tsx",
+      "import_path": "",
+      "props": [
+        {
+          "name": "isActive",
+          "type": "boolean"
+        }
+      ]
+    },
+    {
+      "name": "PaginationItem",
+      "file": "src/components/ui/pagination.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "PaginationPrevious",
+      "file": "src/components/ui/pagination.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "PaginationNext",
+      "file": "src/components/ui/pagination.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "PaginationEllipsis",
+      "file": "src/components/ui/pagination.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "Popover",
+      "file": "src/components/ui/popover.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "PopoverTrigger",
+      "file": "src/components/ui/popover.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "PopoverContent",
+      "file": "src/components/ui/popover.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "PopoverAnchor",
+      "file": "src/components/ui/popover.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "Progress",
+      "file": "src/components/ui/progress.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "RadioGroup",
+      "file": "src/components/ui/radio-group.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "RadioGroupItem",
+      "file": "src/components/ui/radio-group.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "ResizablePanelGroup",
+      "file": "src/components/ui/resizable.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "ResizablePanel",
+      "file": "src/components/ui/resizable.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "ResizableHandle",
+      "file": "src/components/ui/resizable.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "ScrollArea",
+      "file": "src/components/ui/scroll-area.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "ScrollBar",
+      "file": "src/components/ui/scroll-area.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "Select",
+      "file": "src/components/ui/select.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "SelectGroup",
+      "file": "src/components/ui/select.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "SelectValue",
+      "file": "src/components/ui/select.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "SelectTrigger",
+      "file": "src/components/ui/select.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "SelectContent",
+      "file": "src/components/ui/select.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "SelectLabel",
+      "file": "src/components/ui/select.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "SelectItem",
+      "file": "src/components/ui/select.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "SelectSeparator",
+      "file": "src/components/ui/select.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "SelectScrollUpButton",
+      "file": "src/components/ui/select.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "SelectScrollDownButton",
+      "file": "src/components/ui/select.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "Separator",
+      "file": "src/components/ui/separator.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "Sheet",
+      "file": "src/components/ui/sheet.tsx",
+      "import_path": "",
+      "props": [
+        {
+          "name": "side",
+          "type": "enum",
+          "values": [
+            "top",
+            "bottom",
+            "left",
+            "right"
+          ],
+          "default": "right"
+        }
+      ]
+    },
+    {
+      "name": "SheetPortal",
+      "file": "src/components/ui/sheet.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "SheetOverlay",
+      "file": "src/components/ui/sheet.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "SheetTrigger",
+      "file": "src/components/ui/sheet.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "SheetClose",
+      "file": "src/components/ui/sheet.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "SheetContent",
+      "file": "src/components/ui/sheet.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "SheetHeader",
+      "file": "src/components/ui/sheet.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "SheetFooter",
+      "file": "src/components/ui/sheet.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "SheetTitle",
+      "file": "src/components/ui/sheet.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "SheetDescription",
+      "file": "src/components/ui/sheet.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "Sidebar",
+      "file": "src/components/ui/sidebar.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "SidebarContent",
+      "file": "src/components/ui/sidebar.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "SidebarFooter",
+      "file": "src/components/ui/sidebar.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "SidebarGroup",
+      "file": "src/components/ui/sidebar.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "SidebarGroupAction",
+      "file": "src/components/ui/sidebar.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "SidebarGroupContent",
+      "file": "src/components/ui/sidebar.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "SidebarGroupLabel",
+      "file": "src/components/ui/sidebar.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "SidebarHeader",
+      "file": "src/components/ui/sidebar.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "SidebarInput",
+      "file": "src/components/ui/sidebar.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "SidebarInset",
+      "file": "src/components/ui/sidebar.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "SidebarMenu",
+      "file": "src/components/ui/sidebar.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "SidebarMenuAction",
+      "file": "src/components/ui/sidebar.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "SidebarMenuBadge",
+      "file": "src/components/ui/sidebar.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "SidebarMenuButton",
+      "file": "src/components/ui/sidebar.tsx",
+      "import_path": "",
+      "props": [
+        {
+          "name": "variant",
+          "type": "enum",
+          "values": [
+            "default",
+            "outline"
+          ],
+          "default": "default"
+        },
+        {
+          "name": "size",
+          "type": "enum",
+          "values": [
+            "default",
+            "sm",
+            "lg"
+          ],
+          "default": "default"
+        }
+      ]
+    },
+    {
+      "name": "SidebarMenuItem",
+      "file": "src/components/ui/sidebar.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "SidebarMenuSkeleton",
+      "file": "src/components/ui/sidebar.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "SidebarMenuSub",
+      "file": "src/components/ui/sidebar.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "SidebarMenuSubButton",
+      "file": "src/components/ui/sidebar.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "SidebarMenuSubItem",
+      "file": "src/components/ui/sidebar.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "SidebarProvider",
+      "file": "src/components/ui/sidebar.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "SidebarRail",
+      "file": "src/components/ui/sidebar.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "SidebarSeparator",
+      "file": "src/components/ui/sidebar.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "SidebarTrigger",
+      "file": "src/components/ui/sidebar.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "Skeleton",
+      "file": "src/components/ui/skeleton.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "Slider",
+      "file": "src/components/ui/slider.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "Toaster",
+      "file": "src/components/ui/sonner.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "Switch",
+      "file": "src/components/ui/switch.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "Table",
+      "file": "src/components/ui/table.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "TableHeader",
+      "file": "src/components/ui/table.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "TableBody",
+      "file": "src/components/ui/table.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "TableFooter",
+      "file": "src/components/ui/table.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "TableHead",
+      "file": "src/components/ui/table.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "TableRow",
+      "file": "src/components/ui/table.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "TableCell",
+      "file": "src/components/ui/table.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "TableCaption",
+      "file": "src/components/ui/table.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "Tabs",
+      "file": "src/components/ui/tabs.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "TabsList",
+      "file": "src/components/ui/tabs.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "TabsTrigger",
+      "file": "src/components/ui/tabs.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "TabsContent",
+      "file": "src/components/ui/tabs.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "Textarea",
+      "file": "src/components/ui/textarea.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "ToggleGroup",
+      "file": "src/components/ui/toggle-group.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "ToggleGroupItem",
+      "file": "src/components/ui/toggle-group.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "Toggle",
+      "file": "src/components/ui/toggle.tsx",
+      "import_path": "",
+      "props": [
+        {
+          "name": "variant",
+          "type": "enum",
+          "values": [
+            "default",
+            "outline"
+          ],
+          "default": "default"
+        },
+        {
+          "name": "size",
+          "type": "enum",
+          "values": [
+            "default",
+            "sm",
+            "lg"
+          ],
+          "default": "default"
+        }
+      ]
+    },
+    {
+      "name": "Tooltip",
+      "file": "src/components/ui/tooltip.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "TooltipTrigger",
+      "file": "src/components/ui/tooltip.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "TooltipContent",
+      "file": "src/components/ui/tooltip.tsx",
+      "import_path": ""
+    },
+    {
+      "name": "TooltipProvider",
+      "file": "src/components/ui/tooltip.tsx",
+      "import_path": ""
+    }
+  ]
+}

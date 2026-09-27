@@ -34,9 +34,11 @@ function ReviewPage() {
 
   useEffect(() => {
     if (!r) return;
-    const partial = ((r.raw_payload as Record<string, unknown>)?.partial ?? {}) as Record<string, unknown>;
-    setTitle(typeof partial.title === "string" ? partial.title : "");
-    setPrice(partial.price != null ? String(partial.price) : "");
+    const partial = ((r.raw_payload as Record<string, unknown>)?.["partial"] ?? {}) as Record<string, unknown>;
+    const t = partial["title"];
+    const p = partial["price"];
+    setTitle(typeof t === "string" ? t : "");
+    setPrice(p != null ? String(p) : "");
     setNotes(r.notes ?? "");
   }, [r]);
 

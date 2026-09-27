@@ -1,19 +1,19 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { z } from "zod";
-import { zodValidator } from "@tanstack/zod-adapter";
 import { AppShell, StatusBadge } from "@/components/AppShell";
 import { ERROR_TYPES, timeAgo, triageListQuery } from "@/lib/triage";
 import { Input } from "@/components/ui/input";
 
 const searchSchema = z.object({
-  status: z.enum(["open", "resolved", "dismissed", "all"]).catch("open").default("open"),
-  type: z.string().catch("all").default("all"),
-  q: z.string().catch("").default(""),
+  status: z.enum(["open", "resolved", "dismissed", "all"]).catch("open"),
+  type: z.string().catch("all"),
+  q: z.string().catch(""),
 });
 
 export const Route = createFileRoute("/_authenticated/")({
-  validateSearch: zodValidator(searchSchema),
+  validateSearch: (s: Record<string, unknown>) =>
+    searchSchema.parse({ status: s["status"] ?? "open", type: s["type"] ?? "all", q: s["q"] ?? "" }),
   head: () => ({
     meta: [
       { title: "Triage Queue — Triage Console" },

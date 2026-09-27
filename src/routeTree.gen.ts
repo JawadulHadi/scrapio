@@ -11,7 +11,11 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as AuthenticatedIndexRouteImport } from './routes/_authenticated/index'
+import { Route as AuthenticatedDataRouteImport } from './routes/_authenticated/data'
 import { Route as AuthenticatedIntegrationRouteImport } from './routes/_authenticated/integration'
+import { Route as AuthenticatedJobsRouteImport } from './routes/_authenticated/jobs'
+import { Route as AuthenticatedQueueRouteImport } from './routes/_authenticated/queue'
 import { Route as AuthenticatedTriageIdRouteImport } from './routes/_authenticated/triage.$id'
 import { Route as ApiPublicTriageIngestRouteImport } from './routes/api/public/triage/ingest'
 
@@ -24,12 +28,32 @@ const AuthRoute = AuthRouteImport.update({
   path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedIndexRoute = AuthenticatedIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedDataRoute = AuthenticatedDataRouteImport.update({
+  id: '/data',
+  path: '/data',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedIntegrationRoute =
   AuthenticatedIntegrationRouteImport.update({
     id: '/integration',
     path: '/integration',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedJobsRoute = AuthenticatedJobsRouteImport.update({
+  id: '/jobs',
+  path: '/jobs',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedQueueRoute = AuthenticatedQueueRouteImport.update({
+  id: '/queue',
+  path: '/queue',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedTriageIdRoute = AuthenticatedTriageIdRouteImport.update({
   id: '/triage/$id',
   path: '/triage/$id',
@@ -42,16 +66,22 @@ const ApiPublicTriageIngestRoute = ApiPublicTriageIngestRouteImport.update({
 } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof AuthenticatedRouteRouteWithChildren
+  '/': typeof AuthenticatedIndexRoute
   '/auth': typeof AuthRoute
+  '/data': typeof AuthenticatedDataRoute
   '/integration': typeof AuthenticatedIntegrationRoute
+  '/jobs': typeof AuthenticatedJobsRoute
+  '/queue': typeof AuthenticatedQueueRoute
   '/triage/$id': typeof AuthenticatedTriageIdRoute
   '/api/public/triage/ingest': typeof ApiPublicTriageIngestRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
+  '/data': typeof AuthenticatedDataRoute
   '/integration': typeof AuthenticatedIntegrationRoute
+  '/jobs': typeof AuthenticatedJobsRoute
+  '/queue': typeof AuthenticatedQueueRoute
+  '/': typeof AuthenticatedIndexRoute
   '/triage/$id': typeof AuthenticatedTriageIdRoute
   '/api/public/triage/ingest': typeof ApiPublicTriageIngestRoute
 }
@@ -59,22 +89,44 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
+  '/_authenticated/data': typeof AuthenticatedDataRoute
   '/_authenticated/integration': typeof AuthenticatedIntegrationRoute
+  '/_authenticated/jobs': typeof AuthenticatedJobsRoute
+  '/_authenticated/queue': typeof AuthenticatedQueueRoute
+  '/_authenticated/': typeof AuthenticatedIndexRoute
   '/_authenticated/triage/$id': typeof AuthenticatedTriageIdRoute
   '/api/public/triage/ingest': typeof ApiPublicTriageIngestRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/auth' | '/integration' | '/triage/$id' | '/api/public/triage/ingest'
+    | '/'
+    | '/auth'
+    | '/data'
+    | '/integration'
+    | '/jobs'
+    | '/queue'
+    | '/triage/$id'
+    | '/api/public/triage/ingest'
   fileRoutesByTo: FileRoutesByTo
   to:
-    '/' | '/auth' | '/integration' | '/triage/$id' | '/api/public/triage/ingest'
+    | '/auth'
+    | '/data'
+    | '/integration'
+    | '/jobs'
+    | '/queue'
+    | '/'
+    | '/triage/$id'
+    | '/api/public/triage/ingest'
   id:
     | '__root__'
     | '/_authenticated'
     | '/auth'
+    | '/_authenticated/data'
     | '/_authenticated/integration'
+    | '/_authenticated/jobs'
+    | '/_authenticated/queue'
+    | '/_authenticated/'
     | '/_authenticated/triage/$id'
     | '/api/public/triage/ingest'
   fileRoutesById: FileRoutesById
@@ -101,11 +153,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/': {
+      id: '/_authenticated/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/data': {
+      id: '/_authenticated/data'
+      path: '/data'
+      fullPath: '/data'
+      preLoaderRoute: typeof AuthenticatedDataRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/integration': {
       id: '/_authenticated/integration'
       path: '/integration'
       fullPath: '/integration'
       preLoaderRoute: typeof AuthenticatedIntegrationRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/jobs': {
+      id: '/_authenticated/jobs'
+      path: '/jobs'
+      fullPath: '/jobs'
+      preLoaderRoute: typeof AuthenticatedJobsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/queue': {
+      id: '/_authenticated/queue'
+      path: '/queue'
+      fullPath: '/queue'
+      preLoaderRoute: typeof AuthenticatedQueueRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/triage/$id': {
@@ -126,12 +206,20 @@ declare module '@tanstack/react-router' {
 }
 
 interface AuthenticatedRouteRouteChildren {
+  AuthenticatedDataRoute: typeof AuthenticatedDataRoute
   AuthenticatedIntegrationRoute: typeof AuthenticatedIntegrationRoute
+  AuthenticatedJobsRoute: typeof AuthenticatedJobsRoute
+  AuthenticatedQueueRoute: typeof AuthenticatedQueueRoute
+  AuthenticatedIndexRoute: typeof AuthenticatedIndexRoute
   AuthenticatedTriageIdRoute: typeof AuthenticatedTriageIdRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedDataRoute: AuthenticatedDataRoute,
   AuthenticatedIntegrationRoute: AuthenticatedIntegrationRoute,
+  AuthenticatedJobsRoute: AuthenticatedJobsRoute,
+  AuthenticatedQueueRoute: AuthenticatedQueueRoute,
+  AuthenticatedIndexRoute: AuthenticatedIndexRoute,
   AuthenticatedTriageIdRoute: AuthenticatedTriageIdRoute,
 }
 

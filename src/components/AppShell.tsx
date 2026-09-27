@@ -1,28 +1,55 @@
 import { Link, useNavigate } from "@tanstack/react-router";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQueryClient } from "@tanstack/react-query";
 import type { ReactNode } from "react";
+import { LayoutDashboard, Workflow, Inbox, Database, KeyRound, LogOut, Lightbulb } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
-import { isOperatorQuery } from "@/lib/triage";
-import { Button } from "@/components/ui/button";
+import { useInfoMode } from "@/lib/info-mode";
+import { Switch } from "@/components/ui/switch";
 
 export function StatusBadge({ status }: { status: string }) {
   const cls =
     status === "open"
-      ? "bg-status-open/15 text-status-open border-status-open/30"
+      ? "bg-status-open/15 text-status-open"
       : status === "resolved"
-        ? "bg-status-resolved/15 text-status-resolved border-status-resolved/30"
-        : "bg-status-dismissed/15 text-status-dismissed border-status-dismissed/30";
+        ? "bg-status-resolved/15 text-status-resolved"
+        : "bg-status-dismissed/15 text-status-dismissed";
+  const label = status === "open" ? "Needs fixing" : status === "resolved" ? "Fixed" : "Dismissed";
+  return <span className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${cls}`}>{label}</span>;
+}
+
+const NAV = [
+  { to: "/", label: "Overview", icon: LayoutDashboard, exact: true },
+  { to: "/jobs", label: "Scraper jobs", icon: Workflow },
+  { to: "/queue", label: "Fix queue", icon: Inbox },
+  { to: "/data", label: "Clean data", icon: Database },
+  { to: "/integration", label: "Connect scraper", icon: KeyRound },
+] as const;
+
+export function Logo() {
   return (
-    <span className={`inline-flex items-center rounded border px-1.5 py-0.5 font-mono text-[11px] uppercase tracking-wide ${cls}`}>
-      {status}
+    <span className="flex items-center gap-2 font-display text-xl font-semibold">
+      <span className="grid h-8 w-8 place-items-center rounded-lg bg-primary text-sm font-bold text-primary-foreground">S</span>
+      Scrapefix
     </span>
+  );
+}
+
+export function PageHeader({ title, subtitle, actions }: { title: string; subtitle?: string; actions?: ReactNode }) {
+  return (
+    <div className="animate-fade-in mb-6 flex flex-wrap items-end gap-4">
+      <div className="mr-auto">
+        <h1 className="font-display text-3xl font-semibold tracking-tight">{title}</h1>
+        {subtitle && <p className="mt-1 text-sm text-muted-foreground">{subtitle}</p>}
+      </div>
+      {actions}
+    </div>
   );
 }
 
 export function AppShell({ children }: { children: ReactNode }) {
   const navigate = useNavigate();
   const qc = useQueryClient();
-  const { data: isOperator, isLoading } = useQuery(isOperatorQuery());
+  const { on, toggle } = useInfoMode();
 
   async function signOut() {
     await qc.cancelQueries();
@@ -31,45 +58,50 @@ export function AppShell({ children }: { children: ReactNode }) {
     navigate({ to: "/auth", replace: true });
   }
 
-  const linkCls = "rounded px-3 py-1.5 text-sm text-muted-foreground hover:text-foreground hover:bg-accent";
-  const activeCls = "!text-foreground bg-accent";
+  const linkCls =
+    "flex items-center gap-3 whitespace-nowrap rounded-lg px-3 py-2 text-sm text-muted-foreground transition-all hover:bg-secondary hover:text-foreground";
+  const activeCls = "!bg-card !text-foreground shadow-sm font-medium";
 
   return (
-    <div className="min-h-screen">
-      <header className="border-b bg-sidebar">
-        <div className="mx-auto flex max-w-7xl items-center gap-6 px-4 py-3">
-          <Link to="/" className="flex items-center gap-2 font-mono text-sm font-bold">
-            <span className="inline-block h-2.5 w-2.5 rounded-sm bg-primary" />
-            TRIAGE://CONSOLE
-          </Link>
-          <nav className="flex gap-1">
-            <Link to="/" className={linkCls} activeProps={{ className: activeCls }} activeOptions={{ exact: true }}>
-              Queue
-            </Link>
-            <Link to="/warehouse" className={linkCls} activeProps={{ className: activeCls }}>
-              Warehouse
-            </Link>
-            <Link to="/integration" className={linkCls} activeProps={{ className: activeCls }}>
-              Scraper setup
-            </Link>
-          </nav>
-          <div className="ml-auto">
-            <Button variant="outline" size="sm" onClick={signOut}>
-              Sign out
-            </Button>
-          </div>
+    <div className="min-h-screen lg:flex">
+      <aside className="border-b bg-sidebar lg:sticky lg:top-0 lg:h-screen lg:w-60 lg:shrink-0 lg:border-r lg:border-b-0">
+        <div className="flex items-center justify-between px-4 py-4 lg:px-5 lg:py-6">
+          <Link to="/"><Logo /></Link>
+          <button onClick={signOut} className="text-muted-foreground hover:text-foreground lg:hidden" aria-label="Sign out">
+            <LogOut className="h-5 w-5" />
+          </button>
         </div>
-      </header>
-      <main className="mx-auto max-w-7xl px-4 py-6">
-        {!isLoading && isOperator === false ? (
-          <div className="rounded-md border bg-card p-6 text-sm">
-            <p className="font-semibold">You don't have operator access yet.</p>
-            <p className="mt-1 text-muted-foreground">Ask an existing operator to grant your account access.</p>
-          </div>
-        ) : (
-          children
-        )}
+        <nav className="flex gap-1 overflow-x-auto px-3 pb-3 lg:flex-col lg:px-3">
+          {NAV.map((n) => (
+            <Link key={n.to} to={n.to} className={linkCls} activeProps={{ className: activeCls }} activeOptions={{ exact: "exact" in n }}>
+              <n.icon className="h-4 w-4" />
+              {n.label}
+            </Link>
+          ))}
+        </nav>
+        <div className="hidden px-3 lg:absolute lg:bottom-4 lg:block lg:w-60">
+          <label className="mb-2 flex cursor-pointer items-center gap-3 rounded-lg px-3 py-2 text-sm text-muted-foreground">
+            <Lightbulb className="h-4 w-4" /> Guide mode
+            <Switch checked={on} onCheckedChange={toggle} className="ml-auto" />
+          </label>
+          <button onClick={signOut} className={linkCls + " w-full"}>
+            <LogOut className="h-4 w-4" /> Sign out
+          </button>
+        </div>
+      </aside>
+      <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-6 lg:px-10 lg:py-10">
+        <div className="mb-4 flex justify-end lg:hidden">
+          <label className="flex items-center gap-2 text-xs text-muted-foreground">
+            <Lightbulb className="h-3.5 w-3.5" /> Guide
+            <Switch checked={on} onCheckedChange={toggle} />
+          </label>
+        </div>
+        {children}
       </main>
     </div>
   );
+}
+
+export function Card({ children, className = "" }: { children: ReactNode; className?: string }) {
+  return <div className={`animate-fade-in rounded-2xl border bg-card p-5 shadow-sm ${className}`}>{children}</div>;
 }

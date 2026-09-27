@@ -110,9 +110,33 @@
   * {
     border-color: var(--color-border);
   }
+  /* Respect the browser's font size and zoom: root stays at 100%, everything else in rem/em. */
+  html {
+    font-size: 100%;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.6;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+  h1 { font-weight: 800; }
+  h2, h3 { font-weight: 700; }
+  h4 { font-weight: 600; }
+  p { text-wrap: pretty; }
+  code, kbd, pre, samp { font-size: 0.9em; line-height: 1.5; }
 }

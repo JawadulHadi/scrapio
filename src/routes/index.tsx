@@ -48,7 +48,7 @@ function Landing() {
           <span className="inline-flex items-center gap-2 rounded-full border bg-card/60 px-3 py-1 text-xs text-muted-foreground backdrop-blur">
             <Sparkles className="h-3.5 w-3.5 text-glow" /> A safety net for web scrapers
           </span>
-          <h1 className="mx-auto mt-6 max-w-4xl font-display text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
+          <h1 className="mx-auto mt-6 max-w-4xl font-display text-[clamp(2.25rem,6vw+1rem,4.5rem)] font-extrabold leading-[1.05] tracking-tight">
             Websites break scrapers.<br /><span className="text-gradient">We catch what falls.</span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-base text-muted-foreground sm:text-lg">

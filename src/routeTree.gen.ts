@@ -11,9 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthRouteImport } from './routes/auth'
-import { Route as AuthenticatedIndexRouteImport } from './routes/_authenticated/index'
 import { Route as AuthenticatedIntegrationRouteImport } from './routes/_authenticated/integration'
-import { Route as AuthenticatedWarehouseRouteImport } from './routes/_authenticated/warehouse'
 import { Route as AuthenticatedTriageIdRouteImport } from './routes/_authenticated/triage.$id'
 import { Route as ApiPublicTriageIngestRouteImport } from './routes/api/public/triage/ingest'
 
@@ -26,22 +24,12 @@ const AuthRoute = AuthRouteImport.update({
   path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AuthenticatedIndexRoute = AuthenticatedIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => AuthenticatedRouteRoute,
-} as any)
 const AuthenticatedIntegrationRoute =
   AuthenticatedIntegrationRouteImport.update({
     id: '/integration',
     path: '/integration',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
-const AuthenticatedWarehouseRoute = AuthenticatedWarehouseRouteImport.update({
-  id: '/warehouse',
-  path: '/warehouse',
-  getParentRoute: () => AuthenticatedRouteRoute,
-} as any)
 const AuthenticatedTriageIdRoute = AuthenticatedTriageIdRouteImport.update({
   id: '/triage/$id',
   path: '/triage/$id',
@@ -54,18 +42,16 @@ const ApiPublicTriageIngestRoute = ApiPublicTriageIngestRouteImport.update({
 } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof AuthenticatedIndexRoute
+  '/': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
   '/integration': typeof AuthenticatedIntegrationRoute
-  '/warehouse': typeof AuthenticatedWarehouseRoute
   '/triage/$id': typeof AuthenticatedTriageIdRoute
   '/api/public/triage/ingest': typeof ApiPublicTriageIngestRoute
 }
 export interface FileRoutesByTo {
+  '/': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
   '/integration': typeof AuthenticatedIntegrationRoute
-  '/warehouse': typeof AuthenticatedWarehouseRoute
-  '/': typeof AuthenticatedIndexRoute
   '/triage/$id': typeof AuthenticatedTriageIdRoute
   '/api/public/triage/ingest': typeof ApiPublicTriageIngestRoute
 }
@@ -74,35 +60,21 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
   '/_authenticated/integration': typeof AuthenticatedIntegrationRoute
-  '/_authenticated/warehouse': typeof AuthenticatedWarehouseRoute
-  '/_authenticated/': typeof AuthenticatedIndexRoute
   '/_authenticated/triage/$id': typeof AuthenticatedTriageIdRoute
   '/api/public/triage/ingest': typeof ApiPublicTriageIngestRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    | '/'
-    | '/auth'
-    | '/integration'
-    | '/warehouse'
-    | '/triage/$id'
-    | '/api/public/triage/ingest'
+    '/' | '/auth' | '/integration' | '/triage/$id' | '/api/public/triage/ingest'
   fileRoutesByTo: FileRoutesByTo
   to:
-    | '/auth'
-    | '/integration'
-    | '/warehouse'
-    | '/'
-    | '/triage/$id'
-    | '/api/public/triage/ingest'
+    '/' | '/auth' | '/integration' | '/triage/$id' | '/api/public/triage/ingest'
   id:
     | '__root__'
     | '/_authenticated'
     | '/auth'
     | '/_authenticated/integration'
-    | '/_authenticated/warehouse'
-    | '/_authenticated/'
     | '/_authenticated/triage/$id'
     | '/api/public/triage/ingest'
   fileRoutesById: FileRoutesById
@@ -129,25 +101,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_authenticated/': {
-      id: '/_authenticated/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof AuthenticatedIndexRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
     '/_authenticated/integration': {
       id: '/_authenticated/integration'
       path: '/integration'
       fullPath: '/integration'
       preLoaderRoute: typeof AuthenticatedIntegrationRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
-    '/_authenticated/warehouse': {
-      id: '/_authenticated/warehouse'
-      path: '/warehouse'
-      fullPath: '/warehouse'
-      preLoaderRoute: typeof AuthenticatedWarehouseRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/triage/$id': {
@@ -169,15 +127,11 @@ declare module '@tanstack/react-router' {
 
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedIntegrationRoute: typeof AuthenticatedIntegrationRoute
-  AuthenticatedWarehouseRoute: typeof AuthenticatedWarehouseRoute
-  AuthenticatedIndexRoute: typeof AuthenticatedIndexRoute
   AuthenticatedTriageIdRoute: typeof AuthenticatedTriageIdRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedIntegrationRoute: AuthenticatedIntegrationRoute,
-  AuthenticatedWarehouseRoute: AuthenticatedWarehouseRoute,
-  AuthenticatedIndexRoute: AuthenticatedIndexRoute,
   AuthenticatedTriageIdRoute: AuthenticatedTriageIdRoute,
 }
 

@@ -1,38 +1,104 @@
-# Scrapper
+<p align="center">
+  <img src="public/logo-wordmark.svg" alt="Scrapefix" width="260" />
+</p>
 
-The Streamlit dashboard UI acts as the Human-in-the-Loop fallback and triage mechanism for your scraper pipeline.
+<p align="center"><b>Websites break scrapers. We catch what falls.</b></p>
 
-Since websites regularly change their designs, even a highly resilient scraping architecture will eventually encounter broken selectors, layout shifts, or CAPTCHA blocks. Instead of allowing these failures to crash the scraper or silently corrupt your database, the Streamlit dashboard serves as a bridge between automated errors and clean data storage through a structured recovery cycle:
+<p align="center">
+  <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-4f46e5.svg"></a>
+  <img alt="TanStack Start" src="https://img.shields.io/badge/TanStack-Start-7c74ff.svg">
+  <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-strict-1e1e5a.svg">
+</p>
 
-Scraper Error Isolation: When the scraper encounters a layout exception, it catches the error safely without stopping the rest of the batch queue. It writes the failing URL and the error trace details directly to a human_triage_queue table in your database.
+---
 
-Dashboard Visibility: The Streamlit app connects to this database to monitor the triage table, displaying a clean list of failed runs to developers or operations team members.
+Scrapefix is a **human-in-the-loop triage dashboard** for web scrapers. When your scraper hits a
+layout change or a missing field, it sends the failing URL and error trace to Scrapefix instead of
+silently dropping the record. An operator reviews it, fills in the missing fields, and approves it —
+the clean record lands in your warehouse and (optionally) a Google Sheet.
 
-The Manual Override: Through the Streamlit UI, a human operator can review the broken link, manually edit/type in the missing data fields, or override page elements.
+## Features
 
-Data Promotion: Once processed and approved through the UI, the app marks the record clean and migrates it back to your clean production database tables, resolving the exception gracefully.
+- **Fix queue** — every failed scrape, with filters, tabs, and full error traces
+- **Record review** — side-by-side error trace and manual override form
+- **Clean data** — searchable warehouse of approved records with CSV export
+- **Google Sheets export** — keep a spreadsheet tab always up to date
+- **Scraper jobs** — track the sites you scrape and their failure counts
+- **Personal ingest key** — plug in any scraper (Python example included)
+- **Private by default** — every account is its own isolated workspace
+- **Sign-in** — Google, magic link, or email + password
+- **Guide mode** — plain-language hints on every page
 
-By decoupling your raw data ingestion from manual fixes, you prevent silent data loss and avoid having to build overly complex "AI self-healing" models when a simple manual override is faster and 100% accurate.
+## Tech stack
 
-🛠️ Would you like to see the Python code to build this Streamlit triage dashboard and connect it to your database's queue table?
+| Layer | Tech |
+| --- | --- |
+| Framework | TanStack Start v1 (React 19, Vite 7) |
+| Styling | Tailwind CSS v4, shadcn/ui, Recharts |
+| Backend | Lovable Cloud (Postgres + Auth + RLS) |
+| Server logic | `createServerFn` + server routes |
+| Runtime | Edge (Cloudflare Workers) |
 
-This project was built with [Lovable](https://lovable.dev).
+## Quick start
 
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/d1cd72ac-da03-4ec2-b353-7361702efa93).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
+```bash
+bun install
+bun run dev      # http://localhost:8080
+bun run build    # production build
+bun run lint
 ```
+
+Environment variables (`.env`, auto-provided by Lovable Cloud):
+
+```
+VITE_SUPABASE_URL=...
+VITE_SUPABASE_PUBLISHABLE_KEY=...
+VITE_SUPABASE_PROJECT_ID=...
+```
+
+## Connect your scraper
+
+```python
+import requests
+
+requests.post(
+    "https://<your-app>/api/public/triage/ingest",
+    headers={"x-ingest-key": "<your personal key>"},
+    json={
+        "url": "https://example.com/product/42",
+        "error_type": "missing_field",
+        "error_trace": "KeyError: 'price'",
+        "raw_payload": {"title": "Blue mug"},
+    },
+    timeout=10,
+)
+```
+
+Find your key on the **Connect scraper** page.
+
+## Project structure
+
+```text
+src/
+  routes/
+    index.tsx               Public landing page
+    auth.tsx                Sign-in (Google, magic link, password)
+    _authenticated/         Dashboard, jobs, queue, triage, data, integration
+    api/public/triage/      Ingest endpoint for scrapers
+  components/               AppShell, SheetExportCard, ui/*
+  lib/                      triage helpers, sheets server fn, guide mode
+supabase/migrations/        Database schema + RLS
+docs/                       Architecture, API, deployment, wiki
+```
+
+## Documentation
+
+- [Architecture](docs/ARCHITECTURE.md)
+- [Ingest API](docs/API.md)
+- [Deployment](docs/DEPLOYMENT.md)
+- [Wiki](docs/wiki/Home.md)
+- [Contributing](CONTRIBUTING.md) · [Code of Conduct](CODE_OF_CONDUCT.md) · [Security](SECURITY.md) · [Changelog](CHANGELOG.md)
+
+## License
+
+[MIT](LICENSE) © 2026 Jawad Ul Hadi
